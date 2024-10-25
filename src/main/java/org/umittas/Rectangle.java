@@ -2,13 +2,13 @@ package org.umittas;
 
 public class Rectangle implements Cloneable {
     /**
-     *Rectangle class has 2 fields
+     *Rectangle class has 4 fields
      * name, length, width and memoryAddress
      * Field are private so, Direct access is prohibited
-     * instead, Getter and setter methods used to access length and width fields
+     * instead, We will use Getter and setter methods to access fields
      * The purpose of getter and setter methods are controlling the access
      * if you have a logic like length cannot be negative value, you can apply that logic into setter method
-     * This is called encapsulation
+     * This is called encapsulation in Object Oriented Programming
      */
     private String name;
     private int length;
@@ -50,7 +50,12 @@ public class Rectangle implements Cloneable {
     }
 
     public void setWidth(int width) {
-        this.width = width;
+        //value must be positive
+        if(width>0){
+            this.width = width;
+        }else{
+            System.out.println("Not allowed to set width as negative");
+        }
     }
 
 
@@ -76,6 +81,12 @@ public class Rectangle implements Cloneable {
         return "Rectangle [name="+name+", length=" + length + ", width=" + width + ", MemoryAddress=" + memoryAddress+"]";
     }
 
+    //Calculate area and return double data type
+    public double calculateArea(){
+        return length*width;
+    }
+
+    //This will copy our object to new instance
     public Object clone() throws CloneNotSupportedException
     {
         return super.clone();
